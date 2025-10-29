@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="<?php echo e(asset('admin/assets/images/favicon-32x32.png')); ?>" type="image/png"/>
+	<!--plugins-->
+	<link href="<?php echo e(asset('admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')); ?>" rel="stylesheet"/>
+	<link href="<?php echo e(asset('admin/assets/plugins/simplebar/css/simplebar.css')); ?>" rel="stylesheet" />
+	<link href="<?php echo e(asset('admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')); ?>" rel="stylesheet" />
+	<link href="<?php echo e(asset('admin/assets/plugins/metismenu/css/metisMenu.min.css')); ?>" rel="stylesheet"/>
+	<link href="<?php echo e(asset('admin/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')); ?>" rel="stylesheet" />
+	<!-- loader-->
+	<link href="<?php echo e(asset('admin/assets/css/pace.min.css')); ?>" rel="stylesheet"/>
+	<script src="<?php echo e(asset('admin/assets/js/pace.min.js')); ?>"></script>
+	<!-- Bootstrap CSS -->
+	<link href="<?php echo e(asset('admin/assets/css/bootstrap.min.css')); ?>" rel="stylesheet">
+	<link href="<?php echo e(asset('admin/assets/css/bootstrap-extended.css')); ?>" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+	<link href="<?php echo e(asset('admin/assets/css/app.css')); ?>" rel="stylesheet">
+	<link href="<?php echo e(asset('admin/assets/css/icons.css')); ?>" rel="stylesheet">
+	<!-- Theme Style CSS -->
+	<link rel="stylesheet" href="<?php echo e(asset('admin/assets/css/dark-theme.css')); ?>"/>
+	<link rel="stylesheet" href="<?php echo e(asset('admin/assets/css/semi-dark.css')); ?>"/>
+	<link rel="stylesheet" href="<?php echo e(asset('admin/assets/css/header-colors.css')); ?>"/>
+	<title>Facilon | Admin</title>
+</head>
+
+<body>
+	<!--wrapper-->
+	<div class="wrapper">
+		<!--sidebar wrapper -->
+		<div class="sidebar-wrapper" data-simplebar="true">
+			<div class="sidebar-header">
+				<div>
+					<img src="<?php echo e(asset('frontend/images/logo.png')); ?>" class="logo-icon" alt="logo icon">
+				</div>
+				<div>
+					<h4 class="logo-text">Facilon</h4>
+				</div>
+				<div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
+				</div>
+			 </div>
+			<!--navigation-->
+			<ul class="metismenu" id="menu">
+				<li>
+					<a href="<?php echo e(route('dashboard_show')); ?>">
+						<div class="parent-icon"><i class='bx bx-home-alt'></i>
+						</div>
+						<div class="menu-title">Dashboard</div>
+					</a>
+					
+				</li>
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class="bx bx-category"></i>
+						</div>
+						<div class="menu-title">Home</div>
+					</a>
+					<ul>
+						<li><a href="<?php echo e(route('admin.view_banner_details')); ?>"><i class='bx bx-radio-circle'></i>Banner Details</a></li>
+						<li><a href="<?php echo e(route('admin.list_key_points')); ?>"><i class='bx bx-radio-circle'></i>Journey With Facilon</a></li>
+					</ul>
+				</li>
+				<!--<li>-->
+				<!--	<a href="javascript:;" class="has-arrow">-->
+				<!--		<div class="parent-icon"><i class="bx bx-category"></i>-->
+				<!--		</div>-->
+				<!--		<div class="menu-title">User Management</div>-->
+				<!--	</a>-->
+				<!--	<ul>-->
+				<!--		<li><a href="<?php echo e(route('admin.add_new_user_show')); ?>"><i class='bx bx-radio-circle'></i>Add User</a></li>-->
+				<!--		<li><a href="<?php echo e(route('admin.all_users_list')); ?>"><i class='bx bx-radio-circle'></i>All Users</a></li>-->
+				<!--	</ul>-->
+				<!--</li>-->
+				<li class="menu-label">Service Provider Scheduling</li>
+				<li>
+					<a href="<?php echo e(route('admin.view_scheduling_all_service_providers')); ?>">
+						<div class="parent-icon"><i class="bx bx-help-circle"></i>
+						</div>
+						<div class="menu-title">All Schedulings</div>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo e(route('admin.view_new_service_provider_scheduling')); ?>">
+						<div class="parent-icon"><i class="bx bx-help-circle"></i>
+						</div>
+						<div class="menu-title">New Scheduling</div>
+					</a>
+				</li>
+				<li class="menu-label">Enviorments</li>
+				<li>
+					<a href="<?php echo e(route('admin.view_all_available_enviorments')); ?>">
+						<div class="parent-icon"><i class="bx bx-help-circle"></i>
+						</div>
+						<div class="menu-title">All</div>
+					</a>
+				</li>
+				<li class="menu-label">Types Of Service Providers</li>
+				<li>
+					<a href="<?php echo e(route('admin.list_service_providers')); ?>">
+						<div class="parent-icon"><i class="bx bx-help-circle"></i>
+						</div>
+						<div class="menu-title">List</div>
+					</a>
+				</li>
+				<!--<li class="menu-label">Registration</li>-->
+				<!--<li>-->
+				<!--	<a href="javascript:void(0);" class="has-arrow">-->
+				<!--		<div class="parent-icon"><i class="bx bx-category"></i></div>-->
+				<!--		<div class="menu-title">Service Providers</div>-->
+				<!--	</a>-->
+				<!--	<ul>-->
+				<!--		<li><a href="<?php echo e(route('admin.get_service_provider_registration_list')); ?>/1"><i class='bx bx-radio-circle'></i>Brokers</a></li>-->
+				<!--		<li><a href=""><i class='bx bx-radio-circle'></i>Banks</a></li>-->
+				<!--		<li><a href=""><i class='bx bx-radio-circle'></i>Custodian</a></li>-->
+				<!--		<li><a href=""><i class='bx bx-radio-circle'></i>Introducer</a></li>-->
+				<!--		<li><a href=""><i class='bx bx-radio-circle'></i>Investment Advisor</a></li>-->
+				<!--		<li><a href=""><i class='bx bx-radio-circle'></i>Portfolio Manager</a></li>-->
+				<!--	</ul>-->
+				<!--</li>-->
+
+				<li class="menu-label">Service Provider Products</li>
+				<li>
+					<a href="javascript:void(0);" class="has-arrow">
+						<div class="parent-icon"><i class="bx bx-category"></i></div>
+						<div class="menu-title">Custody</div>
+					</a>
+					<ul>
+						<li><a href="<?php echo e(route('admin.view_custody_basic_details')); ?>"><i class='bx bx-radio-circle'></i>Basic Details</a></li>
+						<li><a href="<?php echo e(route('admin.list_custody_services')); ?>"><i class='bx bx-radio-circle'></i>List Services</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);" class="has-arrow">
+						<div class="parent-icon"><i class="bx bx-category"></i></div>
+						<div class="menu-title">Derivatives Trading</div>
+					</a>
+					<ul>
+						<li><a href="<?php echo e(route('admin.view_derivatives_trading_basic_details')); ?>"><i class='bx bx-radio-circle'></i>Basic Details</a></li>
+						<li><a href="<?php echo e(route('admin.list_types_of_derivatives')); ?>"><i class='bx bx-radio-circle'></i>List Types Of Derivatives</a></li>
+						<li><a href="<?php echo e(route('admin.list_derivatives_trading_services')); ?>"><i class='bx bx-radio-circle'></i>List Services</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);" class="has-arrow">
+						<div class="parent-icon"><i class="bx bx-category"></i></div>
+						<div class="menu-title">Portfolio Investment Scheme</div>
+					</a>
+					<ul>
+						<li><a href="<?php echo e(route('admin.view_portfolio_investment_scheme_basic_details')); ?>"><i class='bx bx-radio-circle'></i>Basic Details</a></li>
+						<li><a href="<?php echo e(route('admin.list_portfolio_investment_scheme_services')); ?>"><i class='bx bx-radio-circle'></i>List Services</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);" class="has-arrow">
+						<div class="parent-icon"><i class="bx bx-category"></i></div>
+						<div class="menu-title">Portfolio Management Services</div>
+					</a>
+					<ul>
+						<li><a href="<?php echo e(route('admin.view_portfolio_management_services_basic_details')); ?>"><i class='bx bx-radio-circle'></i>Basic Details</a></li>
+						<li><a href="<?php echo e(route('admin.list_portfolio_management_services')); ?>"><i class='bx bx-radio-circle'></i>List Services</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);" class="has-arrow">
+						<div class="parent-icon"><i class="bx bx-category"></i></div>
+						<div class="menu-title">Trading In Listed Securities</div>
+					</a>
+					<ul>
+						<li><a href="<?php echo e(route('admin.view_trading_listed_securities_basic_details')); ?>"><i class='bx bx-radio-circle'></i>Basic Details</a></li>
+						<li><a href="<?php echo e(route('admin.list_trading_listed_securities_services')); ?>"><i class='bx bx-radio-circle'></i>List Services</a></li>
+					</ul>
+				</li>
+				
+				
+				
+				
+				
+			</ul>
+			<!--end navigation-->
+		</div>
+		<!--end sidebar wrapper -->
+		<!--start header -->
+		<header>
+			<div class="topbar d-flex align-items-center">
+				<nav class="navbar navbar-expand gap-3">
+					<div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
+					</div>
+
+					  <!--<div class="search-bar d-lg-block d-none" data-bs-toggle="modal" data-bs-target="#SearchModal">-->
+					  <!--   <a href="avascript:;" class="btn d-flex align-items-center"><i class="bx bx-search"></i>Search</a>-->
+					  <!--</div>-->
+
+					  <div class="top-menu ms-auto">
+						<ul class="navbar-nav align-items-center gap-1">
+							<li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal" data-bs-target="#SearchModal">
+								<a class="nav-link" href="avascript:;"><i class='bx bx-search'></i>
+								</a>
+							</li>
+							
+							
+
+							
+
+							
+							
+						</ul>
+					</div>
+					<div class="user-box dropdown px-3">
+						<a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<img src="" class="user-img" alt="user avatar">
+							<div class="user-info">
+								<p class="user-name mb-0">Admin</p>
+								
+							</div>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end">
+							<li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
+							</li>
+							<li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
+							</li>
+							<li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
+							</li>
+							<li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-dollar-circle fs-5"></i><span>Earnings</span></a>
+							</li>
+							<li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-download fs-5"></i><span>Downloads</span></a>
+							</li>
+							<li>
+								<div class="dropdown-divider mb-0"></div>
+							</li>
+							<li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-log-out-circle"></i><span>Logout</span></a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+      <?php echo $__env->yieldContent('content'); ?>
+     <!--start overlay-->
+		 <div class="overlay toggle-icon"></div>
+		<!--end overlay-->
+		<!--Start Back To Top Button-->
+		  <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+		<footer class="page-footer">
+			<p class="mb-0">Copyright © 2025. All right reserved.</p>
+		</footer>
+	</div>
+	<!--end wrapper-->
+
+
+	<!-- search modal -->
+    <div class="modal" id="SearchModal" tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-md-down">
+		  <div class="modal-content">
+			<div class="modal-header gap-2">
+			  <div class="position-relative popup-search w-100">
+				<input class="form-control form-control-lg ps-5 border border-3 border-primary" type="search" placeholder="Search">
+				<span class="position-absolute top-50 search-show ms-3 translate-middle-y start-0 top-50 fs-4"><i class='bx bx-search'></i></span>
+			  </div>
+			  <button type="button" class="btn-close d-md-none" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="search-list">
+				   <p class="mb-1">Html Templates</p>
+				   <div class="list-group">
+					  <a href="javascript:;" class="list-group-item list-group-item-action active align-items-center d-flex gap-2 py-1"><i class='bx bxl-angular fs-4'></i>Best Html Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-vuejs fs-4'></i>Html5 Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-magento fs-4'></i>Responsive Html5 Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-shopify fs-4'></i>eCommerce Html Templates</a>
+				   </div>
+				   <p class="mb-1 mt-3">Web Designe Company</p>
+				   <div class="list-group">
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-windows fs-4'></i>Best Html Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-dropbox fs-4' ></i>Html5 Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-opera fs-4'></i>Responsive Html5 Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-wordpress fs-4'></i>eCommerce Html Templates</a>
+				   </div>
+				   <p class="mb-1 mt-3">Software Development</p>
+				   <div class="list-group">
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-mailchimp fs-4'></i>Best Html Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-zoom fs-4'></i>Html5 Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-sass fs-4'></i>Responsive Html5 Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-vk fs-4'></i>eCommerce Html Templates</a>
+				   </div>
+				   <p class="mb-1 mt-3">Online Shoping Portals</p>
+				   <div class="list-group">
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-slack fs-4'></i>Best Html Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-skype fs-4'></i>Html5 Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-twitter fs-4'></i>Responsive Html5 Templates</a>
+					  <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2 py-1"><i class='bx bxl-vimeo fs-4'></i>eCommerce Html Templates</a>
+				   </div>
+				</div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+    <!-- end search modal -->
+
+
+
+
+	<!--start switcher-->
+	<div class="switcher-wrapper">
+		<div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
+		</div>
+		<div class="switcher-body">
+			<div class="d-flex align-items-center">
+				<h5 class="mb-0 text-uppercase">Theme Customizer</h5>
+				<button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
+			</div>
+			<hr/>
+			<h6 class="mb-0">Theme Styles</h6>
+			<hr/>
+			<div class="d-flex align-items-center justify-content-between">
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="flexRadioDefault" id="lightmode" checked>
+					<label class="form-check-label" for="lightmode">Light</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="flexRadioDefault" id="darkmode">
+					<label class="form-check-label" for="darkmode">Dark</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="flexRadioDefault" id="semidark">
+					<label class="form-check-label" for="semidark">Semi Dark</label>
+				</div>
+			</div>
+			<hr/>
+			<div class="form-check">
+				<input class="form-check-input" type="radio" id="minimaltheme" name="flexRadioDefault">
+				<label class="form-check-label" for="minimaltheme">Minimal Theme</label>
+			</div>
+			<hr/>
+			<h6 class="mb-0">Header Colors</h6>
+			<hr/>
+			<div class="header-colors-indigators">
+				<div class="row row-cols-auto g-3">
+					<div class="col">
+						<div class="indigator headercolor1" id="headercolor1"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor2" id="headercolor2"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor3" id="headercolor3"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor4" id="headercolor4"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor5" id="headercolor5"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor6" id="headercolor6"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor7" id="headercolor7"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor8" id="headercolor8"></div>
+					</div>
+				</div>
+			</div>
+			<hr/>
+			<h6 class="mb-0">Sidebar Colors</h6>
+			<hr/>
+			<div class="header-colors-indigators">
+				<div class="row row-cols-auto g-3">
+					<div class="col">
+						<div class="indigator sidebarcolor1" id="sidebarcolor1"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor2" id="sidebarcolor2"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor3" id="sidebarcolor3"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor4" id="sidebarcolor4"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor5" id="sidebarcolor5"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor6" id="sidebarcolor6"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor7" id="sidebarcolor7"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor8" id="sidebarcolor8"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end switcher-->
+	<!-- Bootstrap JS -->
+	<script src="<?php echo e(asset('admin/assets/js/bootstrap.bundle.min.js')); ?>"></script>
+	<!--plugins-->
+	<script src="<?php echo e(asset('admin/assets/js/jquery.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('admin/assets/plugins/simplebar/js/simplebar.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('admin/assets/plugins/metismenu/js/metisMenu.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')); ?>"></script>
+	<script src="<?php echo e(asset('admin/assets/plugins/apexcharts-bundle/js/apexcharts.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('admin/assets/plugins/datatable/js/jquery.dataTables.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('admin/assets/plugins/datatable/js/dataTables.bootstrap5.min.js')); ?>"></script>
+	
+	<script src="<?php echo e(asset('admin/assets/js/index.js')); ?>"></script>
+	<!--app JS-->
+	<script src="<?php echo e(asset('admin/assets/js/app.js')); ?>"></script>
+	
+</body>
+
+</html><?php /**PATH C:\laragon\www\facilon_coin\resources\views/layouts/admin-header.blade.php ENDPATH**/ ?>

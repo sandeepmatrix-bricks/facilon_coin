@@ -1,0 +1,44 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Third Party Services
+    |--------------------------------------------------------------------------
+    |
+    | This file is for storing the credentials for third party services such
+    | as Mailgun, Postmark, AWS and more. This file provides the de facto
+    | location for this type of information, allowing packages to have
+    | a conventional file to locate the various service credentials.
+    |
+    */
+
+    'mailgun' => [
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
+        'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
+        'scheme' => 'https',
+    ],
+
+    'postmark' => [
+        'token' => env('POSTMARK_TOKEN'),
+    ],
+
+    'ses' => [
+        'key' => env('AWS_ACCESS_KEY_ID'),
+        'secret' => env('AWS_SECRET_ACCESS_KEY'),
+        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
+    'azureadb2c' => [
+    'client_id' => env('AADB2C_ClientId'),
+    'client_secret' => env('AADB2C_ClientSecret'),
+    'redirect' => env('AADB2C_RedirectUri'),
+    'domain' => env('AADB2C_Domain'),
+    'policy' => env('AADB2C_Policy'),
+    'default_algorithm' => env('AADB2C_DefaultAlgorithm', 'RS256'),
+    'grant_type' => env('AADB2C_GrantType'),
+    'tenant' => env('AADB2C_TENANT'),
+],
+
+];
