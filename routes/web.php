@@ -6,6 +6,7 @@ use App\Http\Controllers\ChangePasswordController;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\BillingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -269,6 +270,14 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('delete-key-point/{id?}',[App\Http\Controllers\AdminController::class,'delete_key_point'])->name('admin.delete_key_point');
     Route::get('deactivate-key-point/{id?}',[App\Http\Controllers\AdminController::class,'deactivate_key_point'])->name('admin.deactivate_key_point');
     Route::get('activate-key-point/{id?}',[App\Http\Controllers\AdminController::class,'activate_key_point'])->name('admin.activate_key_point');
+
+    //Billing Module routes
+    Route::prefix('billing')->name('billing.')->group(function () {
+        Route::get('/', [BillingController::class, 'index'])->name('index');                 
+        Route::get('/create', [BillingController::class, 'create'])->name('create');                 
+        Route::get('/{billing}', [BillingController::class, 'show'])->name('show'); 
+        Route::get('/{billing}/generate', [BillingController::class, 'generate'])->name('generate');             
+    });
 });
 
 Auth::routes();
