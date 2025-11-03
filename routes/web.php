@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\BillingController;
 
 /*
 |--------------------------------------------------------------------------

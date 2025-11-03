@@ -563,7 +563,10 @@ class ComposerStaticInitae5ef55d38dc98cbfbee9a6924182022
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+<<<<<<< HEAD
         'App\\Http\\Controllers\\BillingController' => __DIR__ . '/../..' . '/app/Http/Controllers/BillingController.php',
+=======
+>>>>>>> 42091b5b7535d3a17f3e61b682fe3c49f982fd3d
         'App\\Http\\Controllers\\BrokerController' => __DIR__ . '/../..' . '/app/Http/Controllers/BrokerController.php',
         'App\\Http\\Controllers\\ChangePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChangePasswordController.php',
         'App\\Http\\Controllers\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClientController.php',
