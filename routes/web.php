@@ -6,6 +6,7 @@ use App\Http\Controllers\ChangePasswordController;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\BillingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -128,20 +129,20 @@ Auth::routes();
 Route::get('admin/login',[App\Http\Controllers\AdminController::class,'login_form'])->name('login.form');
 Route::post('login-functionality',[App\Http\Controllers\AdminController::class,'login_functionality'])->name('login.functionality');
 Route::group(['middleware'=>'admin'],function(){
-    
+
     Route::get('logout',[App\Http\Controllers\AdminController::class,'logout'])->name('logout');
     Route::get('dashboard',[App\Http\Controllers\AdminController::class,'dashboard_show'])->name('dashboard_show');
 
     //User Management
     Route::get('user-management/add-new',[App\Http\Controllers\UserController::class,'add_new_user_show'])->name('admin.add_new_user_show');
     Route::post('user-management/add-new',[App\Http\Controllers\UserController::class,'new_user_insert'])->name('admin.new_user_insert');
-    
+
     Route::get('user-management/all-users',[App\Http\Controllers\UserController::class,'all_users_list'])->name('admin.all_users_list');
     Route::get('user-management/all-users/activate/{id?}',[App\Http\Controllers\UserController::class,'users_list_activate'])->name('admin.users_list_activate');
     Route::get('user-management/all-users/deactivate/{id?}',[App\Http\Controllers\UserController::class,'users_list_deactivate'])->name('admin.users_list_deactivate');
     Route::get('user-management/all-users/delete/{id?}',[App\Http\Controllers\UserController::class,'delete_user_from_list'])->name('admin.delete_user_from_list');
-   
-    
+
+
     //  Custody - Basic Details
     Route::get('custody-basic-details',[App\Http\Controllers\AdminController::class,'view_custody_basic_details'])->name('admin.view_custody_basic_details');
     Route::post('custody-basic-details-form',[App\Http\Controllers\AdminController::class,'update_custody_basic_details'])->name('admin.update_custody_basic_details');
@@ -209,7 +210,7 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('activate-portfolio-management-service/{id?}',[App\Http\Controllers\AdminController::class,'activate_portfolio_management_service'])->name('admin.activate_portfolio_management_service');
 
     //Master controller
-    
+
     Route::get('/get-cities-dv', [App\Http\Controllers\AdminController::class, 'fetch_cities_from_dv'])->name('fetch_cities_from_dv');
     Route::get('/get-countries-dv', [App\Http\Controllers\AdminController::class, 'fetch_countries_from_dv'])->name('fetch_countries_from_dv');
 
@@ -237,25 +238,25 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('delete-service-provider/{id?}',[App\Http\Controllers\AdminController::class,'delete_service_provider'])->name('admin.delete_service_provider');
     Route::get('deactivate-service-provider/{id?}',[App\Http\Controllers\AdminController::class,'deactivate_service_provider'])->name('admin.deactivate_service_provider');
     Route::get('activate-service-provider/{id?}',[App\Http\Controllers\AdminController::class,'activate_service_provider'])->name('admin.activate_service_provider');
-    
+
     Route::get('assign-and-approve-service-provider/{id?}',[App\Http\Controllers\AdminController::class,'assign_and_approve_service_provider'])->name('admin.assign_and_approve_service_provider');
     Route::post('assign-and-approve-service-provider/{id?}',[App\Http\Controllers\AdminController::class,'assign_and_approve_service_provider_submit'])->name('admin.assign_and_approve_service_provider_submit');
-    
+
     //Enviorments
     Route::get('all-available-enviorments',[App\Http\Controllers\SchedulingController::class,'view_all_available_enviorments'])->name('admin.view_all_available_enviorments');
-    
-    
+
+
     // Service Provider scheduling
     Route::get('new-service-provider-scheduling',[App\Http\Controllers\SchedulingController::class,'view_new_service_provider_scheduling'])->name('admin.view_new_service_provider_scheduling');
     Route::post('new-service-provider-schedulings',[App\Http\Controllers\SchedulingController::class,'new_service_provider_scheduling_add'])->name('admin.new_service_provider_scheduling_add');
-    
+
     Route::get('all-scheduling-service-providers',[App\Http\Controllers\SchedulingController::class,'view_scheduling_all_service_providers'])->name('admin.view_scheduling_all_service_providers');
-    
+
     Route::get('update-service-provider-scheduling/{id?}',[App\Http\Controllers\SchedulingController::class,'view_update_service_provider_scheduling'])->name('admin.view_update_service_provider_scheduling');
-    
+
     //service providers registration list
     Route::get('regitstration/service-provider/{provider_id?}',[App\Http\Controllers\AdminController::class,'get_service_provider_registration_list'])->name('admin.get_service_provider_registration_list');
-    
+
     //  Home - Banner Details
     Route::get('banner-details',[App\Http\Controllers\AdminController::class,'view_banner_details'])->name('admin.view_banner_details');
     Route::post('banner-details-form',[App\Http\Controllers\AdminController::class,'update_banner_details'])->name('admin.update_banner_details');
@@ -269,6 +270,16 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('delete-key-point/{id?}',[App\Http\Controllers\AdminController::class,'delete_key_point'])->name('admin.delete_key_point');
     Route::get('deactivate-key-point/{id?}',[App\Http\Controllers\AdminController::class,'deactivate_key_point'])->name('admin.deactivate_key_point');
     Route::get('activate-key-point/{id?}',[App\Http\Controllers\AdminController::class,'activate_key_point'])->name('admin.activate_key_point');
+
+    //Billing Module routes
+   Route::prefix('billing')->name('billing.')->group(function () {
+        Route::get('/', [BillingController::class, 'index'])->name('index');
+        Route::get('/create', [BillingController::class, 'create'])->name('create');
+        Route::post('/store', [BillingController::class, 'store'])->name('store');
+        Route::get('/preview-modal/{id}', [BillingController::class, 'previewModal'])->name('preview.modal');
+        Route::get('/approval', [BillingController::class, 'approvalList'])->name('approval.list');
+        Route::post('/approval/{id}/update', [BillingController::class, 'updateApproval'])->name('approval.update');
+    });
 });
 
 Auth::routes();

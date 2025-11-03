@@ -65,6 +65,13 @@
 						<li><a href="{{route('admin.list_key_points')}}"><i class='bx bx-radio-circle'></i>Journey With Facilon</a></li>
 					</ul>
 				</li>
+				<li>
+					<a href="{{route('billing.index')}}">
+						<div class="parent-icon"><i class='bx bx-category'></i>
+						</div>
+						<div class="menu-title">Invoice</div>
+					</a>
+				</li>
 				<!--<li>-->
 				<!--	<a href="javascript:;" class="has-arrow">-->
 				<!--		<div class="parent-icon"><i class="bx bx-category"></i>-->
